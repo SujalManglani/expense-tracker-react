@@ -1,57 +1,69 @@
-import { useState, useEffect } from "react";
-import ExpenseForm from "./components/ExpenseForm";
-import ExpenseList from "./components/ExpenseList";
-import Summary from "./components/Summary";
-import CurrencyConverter from "./components/CurrencyConverter";
-import ExpenseChart from "./components/ExpenseChart";
-import "./App.css";
+import { useState, useEffect } from "react"
+import ExpenseForm from "./components/ExpenseForm"
+import ExpenseList from "./components/ExpenseList"
+import ExpenseChart from "./components/ExpenseChart"
+import CurrencyConverter from "./components/CurrencyConverter"
+import DashboardCards from "./components/DashboardCards"
 
-function App() {
+function App(){
 
-  const [expenses, setExpenses] = useState(() => {
-    const saved = localStorage.getItem("expenses");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [expenses,setExpenses] = useState([])
 
-  useEffect(() => {
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-  }, [expenses]);
+  useEffect(()=>{
+    const saved = localStorage.getItem("expenses")
+    if(saved){
+      setExpenses(JSON.parse(saved))
+    }
+  },[])
 
-  const addExpense = (expense) => {
-    setExpenses([...expenses, { ...expense, id: Date.now() }]);
-  };
+  useEffect(()=>{
+    localStorage.setItem("expenses",JSON.stringify(expenses))
+  },[expenses])
 
-  const deleteExpense = (id) => {
-    setExpenses(expenses.filter((e) => e.id !== id));
-  };
+  const addExpense = (expense)=>{
+    setExpenses([...expenses,{...expense,id:Date.now()}])
+  }
 
-  return (
-    <div className="container">
+  const deleteExpense = (id)=>{
+    setExpenses(expenses.filter(e=>e.id!==id))
+  }
 
-      <h1>Expense Tracker</h1>
+  return(
 
-      <div className="card">
-        <ExpenseForm addExpense={addExpense} />
-      </div>
+    <div className="dashboard">
 
-      <div className="card">
-        <ExpenseList expenses={expenses} deleteExpense={deleteExpense}/>
-      </div>
+      <header className="header">
+        <h1>Startup Expense Dashboard</h1>
+      </header>
 
-      <div className="card">
-        <Summary expenses={expenses}/>
-      </div>
+      <DashboardCards expenses={expenses}/>
 
-      <div className="card">
-        <ExpenseChart expenses={expenses}/>
-      </div>
+      <div className="grid">
 
-      <div className="card">
-        <CurrencyConverter expenses={expenses}/>
+        <div className="card">
+          <ExpenseForm addExpense={addExpense}/>
+        </div>
+
+        <div className="card">
+          <CurrencyConverter expenses={expenses}/>
+        </div>
+
+        <div className="card">
+          <ExpenseChart expenses={expenses}/>
+        </div>
+
+        <div className="card">
+          <ExpenseList
+            expenses={expenses}
+            deleteExpense={deleteExpense}
+          />
+        </div>
+
       </div>
 
     </div>
-  );
+
+  )
 }
 
-export default App;
+export default App

@@ -8,42 +8,41 @@ import {
 
 ChartJS.register(ArcElement,Tooltip,Legend)
 
-function ExpenseChart({ expenses }) {
+function ExpenseChart({expenses}){
 
-  const categoryTotals = {}
+  const categories={}
 
-  expenses.forEach(exp=>{
-    categoryTotals[exp.category] =
-      (categoryTotals[exp.category] || 0) + exp.amount
+  expenses.forEach(e=>{
+    categories[e.category]=(categories[e.category]||0)+e.amount
   })
 
-  const data = {
-    labels: Object.keys(categoryTotals),
-    datasets:[
-      {
-        data:Object.values(categoryTotals),
-        backgroundColor:[
-          "#6366f1",
-          "#8b5cf6",
-          "#22c55e",
-          "#f59e0b",
-          "#ef4444"
-        ]
-      }
-    ]
-  }
+  const data={
+    labels:Object.keys(categories),
 
-  if(expenses.length === 0){
-    return <p>No chart data yet</p>
+    datasets:[{
+      data:Object.values(categories),
+
+      backgroundColor:[
+        "#6366f1",
+        "#22c55e",
+        "#f59e0b",
+        "#ef4444",
+        "#8b5cf6"
+      ]
+    }]
   }
 
   return(
 
-    <div style={{maxWidth:"400px",margin:"auto"}}>
+    <div>
 
       <h3>Expense Distribution</h3>
 
-      <Pie data={data}/>
+      {expenses.length>0 ?
+        <Pie data={data}/>
+        :
+        <p>No chart data</p>
+      }
 
     </div>
 

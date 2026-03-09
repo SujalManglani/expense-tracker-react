@@ -1,35 +1,27 @@
 function Summary({ expenses }) {
+  const total = expenses.reduce((sum, e) => sum + e.amount, 0);
 
-  const total = expenses.reduce((sum,e)=>sum + e.amount,0)
+  const categories = {};
 
-  const categories = {}
+  expenses.forEach((e) => {
+    categories[e.category] = (categories[e.category] || 0) + e.amount;
+  });
 
-  expenses.forEach(e=>{
-    categories[e.category] =
-    (categories[e.category] || 0) + e.amount
-  })
-
-  return(
-
+  return (
     <div className="summary">
-
       <h2>Total Spending</h2>
 
-      <div className="total">
-        ${total.toFixed(2)}
-      </div>
+      <div className="total">${total.toFixed(2)}</div>
 
       <h3>Category Breakdown</h3>
 
-      {Object.keys(categories).map(cat=>(
+      {Object.keys(categories).map((cat) => (
         <p key={cat}>
           {cat}: ${categories[cat].toFixed(2)}
         </p>
       ))}
-
     </div>
-
-  )
+  );
 }
 
-export default Summary
+export default Summary;

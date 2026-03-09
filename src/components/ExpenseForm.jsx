@@ -1,26 +1,29 @@
-import { useState } from "react";
+import { useState } from "react"
 
-function ExpenseForm({ addExpense }) {
+function ExpenseForm({addExpense}){
 
-  const [name,setName] = useState("");
-  const [amount,setAmount] = useState("");
-  const [category,setCategory] = useState("Food");
+  const [name,setName] = useState("")
+  const [amount,setAmount] = useState("")
+  const [category,setCategory] = useState("Food")
 
-  const handleSubmit = (e)=>{
-    e.preventDefault();
+  const handleSubmit=(e)=>{
+    e.preventDefault()
 
     addExpense({
       name,
-      amount: parseFloat(amount),
+      amount:parseFloat(amount),
       category
-    });
+    })
 
-    setName("");
-    setAmount("");
+    setName("")
+    setAmount("")
   }
 
   return(
+
     <form onSubmit={handleSubmit}>
+
+      <h3>Add Expense</h3>
 
       <input
         placeholder="Expense name"
@@ -51,6 +54,7 @@ function ExpenseForm({ addExpense }) {
       <button>Add Expense</button>
 
     </form>
+
   )
 }
 

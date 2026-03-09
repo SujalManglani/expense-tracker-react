@@ -1,13 +1,12 @@
 import { useState,useEffect } from "react"
 import axios from "axios"
 
-function CurrencyConverter({ expenses }) {
+function CurrencyConverter({expenses}){
 
-  const [currency,setCurrency] = useState("EUR")
-  const [rate,setRate] = useState(1)
-  const [error,setError] = useState("")
+  const [currency,setCurrency]=useState("EUR")
+  const [rate,setRate]=useState(1)
 
-  const total = expenses.reduce((sum,e)=>sum + e.amount,0)
+  const total=expenses.reduce((sum,e)=>sum+e.amount,0)
 
   useEffect(()=>{
 
@@ -15,10 +14,6 @@ function CurrencyConverter({ expenses }) {
       .get(`https://api.frankfurter.app/latest?from=USD&to=${currency}`)
       .then(res=>{
         setRate(res.data.rates[currency])
-        setError("")
-      })
-      .catch(()=>{
-        setError("Currency API failed")
       })
 
   },[currency])
@@ -39,13 +34,10 @@ function CurrencyConverter({ expenses }) {
         <option>JPY</option>
       </select>
 
-      {error ? (
-        <p>{error}</p>
-      ):(
-        <p>
-          Total in {currency}: {(total * rate).toFixed(2)}
-        </p>
-      )}
+      <p>
+        Total in {currency}:
+        {(total*rate).toFixed(2)}
+      </p>
 
     </div>
 
