@@ -23,7 +23,7 @@ function ExpenseForm({addExpense}){
 
     <form onSubmit={handleSubmit}>
 
-      <h3>Add Expense</h3>
+      <h3>➕ Add Expense</h3>
 
       <input
         placeholder="Expense name"

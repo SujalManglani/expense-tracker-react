@@ -4,7 +4,7 @@ function ExpenseList({expenses,deleteExpense}){
 
     <div>
 
-      <h3>Recent Expenses</h3>
+      <h3>🧾 Recent Expenses</h3>
 
       {expenses.length===0 && <p>No expenses yet</p>}
 

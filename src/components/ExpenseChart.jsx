@@ -36,7 +36,7 @@ function ExpenseChart({expenses}){
 
     <div>
 
-      <h3>Expense Distribution</h3>
+     <h3>🥧 Expense Distribution</h3>
 
       {expenses.length>0 ?
         <Pie data={data}/>

@@ -22,7 +22,7 @@ function CurrencyConverter({expenses}){
 
     <div>
 
-      <h3>Currency Converter</h3>
+      <h3>💱 Currency Converter</h3>
 
       <select
         value={currency}
