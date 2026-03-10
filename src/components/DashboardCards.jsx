@@ -1,9 +1,7 @@
 function DashboardCards({ expenses }) {
 
   const total = expenses.reduce((sum, e) => sum + e.amount, 0)
-
   const count = expenses.length
-
   const avg = count ? total / count : 0
 
   return (

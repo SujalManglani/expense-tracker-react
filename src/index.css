@@ -1,11 +1,24 @@
-:root {
-  font-family: Inter, system-ui, Arial, sans-serif;
+/* Global Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Dark background */
+/* Root settings */
+
+:root {
+  font-family: "Inter", system-ui, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* Body */
+
 body {
   margin: 0;
-  font-family: Inter, sans-serif;
+  font-family: "Inter", system-ui, Arial, sans-serif;
 
   background: linear-gradient(135deg,
       #020617,
@@ -14,19 +27,26 @@ body {
       #0f172a);
 
   min-height: 100vh;
+
   color: #e2e8f0;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* glow background effect */
+/* Background glow effect */
 
 body::before,
 body::after {
   content: "";
   position: fixed;
+
   width: 500px;
   height: 500px;
 
-  background: radial-gradient(circle, #4f46e5, transparent 60%);
+  background: radial-gradient(circle,
+      #4f46e5,
+      transparent 60%);
 
   filter: blur(150px);
 
@@ -35,12 +55,42 @@ body::after {
   z-index: -1;
 }
 
+/* Top glow */
+
 body::before {
   top: -200px;
   left: -200px;
 }
 
+/* Bottom glow */
+
 body::after {
   bottom: -200px;
   right: -200px;
+}
+
+/* Links */
+
+a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #818cf8;
+}
+
+/* Buttons default reset */
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Images */
+
+img {
+  max-width: 100%;
+  display: block;
 }

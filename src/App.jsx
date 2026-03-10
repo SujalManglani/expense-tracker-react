@@ -4,31 +4,32 @@ import ExpenseList from "./components/ExpenseList"
 import ExpenseChart from "./components/ExpenseChart"
 import CurrencyConverter from "./components/CurrencyConverter"
 import DashboardCards from "./components/DashboardCards"
+import "./App.css"
 
-function App(){
+function App() {
 
-  const [expenses,setExpenses] = useState([])
+  const [expenses, setExpenses] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     const saved = localStorage.getItem("expenses")
-    if(saved){
+    if (saved) {
       setExpenses(JSON.parse(saved))
     }
-  },[])
+  }, [])
 
-  useEffect(()=>{
-    localStorage.setItem("expenses",JSON.stringify(expenses))
-  },[expenses])
+  useEffect(() => {
+    localStorage.setItem("expenses", JSON.stringify(expenses))
+  }, [expenses])
 
-  const addExpense = (expense)=>{
-    setExpenses([...expenses,{...expense,id:Date.now()}])
+  const addExpense = (expense) => {
+    setExpenses([...expenses, { ...expense, id: Date.now() }])
   }
 
-  const deleteExpense = (id)=>{
-    setExpenses(expenses.filter(e=>e.id!==id))
+  const deleteExpense = (id) => {
+    setExpenses(expenses.filter(e => e.id !== id))
   }
 
-  return(
+  return (
 
     <div className="dashboard">
 
@@ -36,20 +37,20 @@ function App(){
         <h1>Startup Expense Dashboard</h1>
       </header>
 
-      <DashboardCards expenses={expenses}/>
+      <DashboardCards expenses={expenses} />
 
       <div className="grid">
 
         <div className="card">
-          <ExpenseForm addExpense={addExpense}/>
+          <ExpenseForm addExpense={addExpense} />
         </div>
 
         <div className="card">
-          <CurrencyConverter expenses={expenses}/>
+          <CurrencyConverter expenses={expenses} />
         </div>
 
         <div className="card">
-          <ExpenseChart expenses={expenses}/>
+          <ExpenseChart expenses={expenses} />
         </div>
 
         <div className="card">
