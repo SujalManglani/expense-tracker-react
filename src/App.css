@@ -1,88 +1,112 @@
-body {
+/* Reset */
+* {
   margin: 0;
-  font-family: Inter, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Background */
+body {
   background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Main container */
 .container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 40px 20px;
-  display: grid;
-  gap: 24px;
-}
-
-h1 {
-  font-size: 42px;
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
   text-align: center;
 }
 
+/* Title */
+h1 {
+  color: white;
+  margin-bottom: 25px;
+  font-size: 32px;
+}
+
+/* Card style */
 .card {
-  width: 100%;
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-radius: 16px;
-  padding: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
+/* Inputs */
 input,
 select {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
+  margin: 8px 0;
+
   border-radius: 8px;
   border: 1px solid #ccc;
-  background: #ffffff;
-  color: #000000;
-  font-size: 16px;
-  outline: none;
-  caret-color: #000;
+
+  background: white;
+  color: black;
+
+  font-size: 14px;
 }
 
+/* Dropdown options */
+select option {
+  color: black;
+  background: white;
+}
+
+/* Placeholder text */
 input::placeholder {
-  color: #888;
+  color: #666;
 }
 
-input:focus,
-select:focus {
-  border: 1px solid #6366f1;
-  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
-}
-
+/* Buttons */
 button {
-  padding: 12px;
+  padding: 10px 15px;
+  margin-top: 10px;
   border: none;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 8px;
+
+  background: #6366f1;
   color: white;
-  font-size: 16px;
+
   cursor: pointer;
+  transition: 0.2s;
 }
 
 button:hover {
-  opacity: 0.9;
+  background: #4f46e5;
 }
 
-.expense {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr auto;
+/* Expense list */
+ul {
+  list-style: none;
+  margin-top: 10px;
+}
+
+li {
+  background: white;
+  color: black;
+
+  padding: 10px;
+  margin-bottom: 8px;
+
+  border-radius: 6px;
+
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  padding: 14px;
-  margin-top: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
 }
 
-.total {
-  font-size: 32px;
-  font-weight: 700;
+/* Chart area */
+canvas {
+  max-width: 400px;
+  margin: auto;
 }
