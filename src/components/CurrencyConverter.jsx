@@ -1,47 +1,37 @@
-import { useState,useEffect } from "react"
-import axios from "axios"
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-function CurrencyConverter({expenses}){
+function CurrencyConverter({ expenses }) {
 
-  const [currency,setCurrency]=useState("EUR")
-  const [rate,setRate]=useState(1)
+  const [currency, setCurrency] = useState("INR"); // default changed to INR
+  const [rate, setRate] = useState(1);
 
-  const total=expenses.reduce((sum,e)=>sum+e.amount,0)
+  const total = expenses.reduce((sum, e) => sum + e.amount, 0);
 
-  useEffect(()=>{
-
+  useEffect(() => {
     axios
       .get(`https://api.frankfurter.app/latest?from=USD&to=${currency}`)
-      .then(res=>{
-        setRate(res.data.rates[currency])
-      })
+      .then((res) => {
+        setRate(res.data.rates[currency]);
+      });
+  }, [currency]);
 
-  },[currency])
-
-  return(
-
+  return (
     <div>
+      <h3>Currency Converter</h3>
 
-      <h3>💱 Currency Converter</h3>
-
-      <select
-        value={currency}
-        onChange={(e)=>setCurrency(e.target.value)}
-      >
+      <select value={currency} onChange={(e) => setCurrency(e.target.value)}>
+        <option>USD</option>
         <option>EUR</option>
         <option>GBP</option>
-        <option>INR</option>
-        <option>JPY</option>
       </select>
 
       <p>
-        Total in {currency}:
-        {(total*rate).toFixed(2)}
+        Total in {currency}: {(total * rate).toFixed(2)}
       </p>
-
     </div>
-
-  )
+  );
 }
 
-export default CurrencyConverter
+export default CurrencyConverter;
+

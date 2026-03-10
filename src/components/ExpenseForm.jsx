@@ -1,17 +1,17 @@
 import { useState } from "react"
 
-function ExpenseForm({addExpense}){
+function ExpenseForm({ addExpense }) {
 
-  const [name,setName] = useState("")
-  const [amount,setAmount] = useState("")
-  const [category,setCategory] = useState("Food")
+  const [name, setName] = useState("")
+  const [amount, setAmount] = useState("")
+  const [category, setCategory] = useState("Food")
 
-  const handleSubmit=(e)=>{
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     addExpense({
       name,
-      amount:parseFloat(amount),
+      amount: parseFloat(amount),
       category
     })
 
@@ -19,16 +19,16 @@ function ExpenseForm({addExpense}){
     setAmount("")
   }
 
-  return(
+  return (
 
     <form onSubmit={handleSubmit}>
 
-      <h3>➕ Add Expense</h3>
+      <h3>Add Expense</h3>
 
       <input
         placeholder="Expense name"
         value={name}
-        onChange={(e)=>setName(e.target.value)}
+        onChange={(e) => setName(e.target.value)}
         required
       />
 
@@ -36,13 +36,13 @@ function ExpenseForm({addExpense}){
         type="number"
         placeholder="Amount"
         value={amount}
-        onChange={(e)=>setAmount(e.target.value)}
+        onChange={(e) => setAmount(e.target.value)}
         required
       />
 
       <select
         value={category}
-        onChange={(e)=>setCategory(e.target.value)}
+        onChange={(e) => setCategory(e.target.value)}
       >
         <option>Food</option>
         <option>Travel</option>

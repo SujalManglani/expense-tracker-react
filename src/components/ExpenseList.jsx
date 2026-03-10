@@ -1,14 +1,14 @@
-function ExpenseList({expenses,deleteExpense}){
+function ExpenseList({ expenses, deleteExpense }) {
 
-  return(
+  return (
 
     <div>
 
-      <h3>🧾 Recent Expenses</h3>
+      <h3>Recent Expenses</h3>
 
-      {expenses.length===0 && <p>No expenses yet</p>}
+      {expenses.length === 0 && <p>No expenses yet</p>}
 
-      {expenses.map(e=>(
+      {expenses.map(e => (
 
         <div className="expense" key={e.id}>
 
@@ -19,7 +19,7 @@ function ExpenseList({expenses,deleteExpense}){
           <span>${e.amount}</span>
 
           <button
-            onClick={()=>deleteExpense(e.id)}
+            onClick={() => deleteExpense(e.id)}
           >
             Delete
           </button>

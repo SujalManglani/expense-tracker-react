@@ -6,23 +6,23 @@ import {
   Legend
 } from "chart.js"
 
-ChartJS.register(ArcElement,Tooltip,Legend)
+ChartJS.register(ArcElement, Tooltip, Legend)
 
-function ExpenseChart({expenses}){
+function ExpenseChart({ expenses }) {
 
-  const categories={}
+  const categories = {}
 
-  expenses.forEach(e=>{
-    categories[e.category]=(categories[e.category]||0)+e.amount
+  expenses.forEach(e => {
+    categories[e.category] = (categories[e.category] || 0) + e.amount
   })
 
-  const data={
-    labels:Object.keys(categories),
+  const data = {
+    labels: Object.keys(categories),
 
-    datasets:[{
-      data:Object.values(categories),
+    datasets: [{
+      data: Object.values(categories),
 
-      backgroundColor:[
+      backgroundColor: [
         "#6366f1",
         "#22c55e",
         "#f59e0b",
@@ -32,14 +32,14 @@ function ExpenseChart({expenses}){
     }]
   }
 
-  return(
+  return (
 
     <div>
 
-     <h3>🥧 Expense Distribution</h3>
+      <h3>Expense Distribution</h3>
 
-      {expenses.length>0 ?
-        <Pie data={data}/>
+      {expenses.length > 0 ?
+        <Pie data={data} />
         :
         <p>No chart data</p>
       }
