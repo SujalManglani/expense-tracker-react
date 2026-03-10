@@ -20,11 +20,13 @@ body {
   margin: 0;
   font-family: "Inter", system-ui, Arial, sans-serif;
 
+  /* Aquatic gradient background */
+
   background: linear-gradient(135deg,
-      #020617,
-      #020617,
-      #020617,
-      #0f172a);
+      #021b2f,
+      #023e4a,
+      #035d6a,
+      #0a9396);
 
   min-height: 100vh;
 
@@ -34,23 +36,23 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Background glow effect */
+/* Background glow */
 
 body::before,
 body::after {
   content: "";
   position: fixed;
 
-  width: 500px;
-  height: 500px;
+  width: 550px;
+  height: 550px;
 
   background: radial-gradient(circle,
-      #4f46e5,
+      #00b4d8,
       transparent 60%);
 
-  filter: blur(150px);
+  filter: blur(160px);
 
-  opacity: 0.15;
+  opacity: 0.18;
 
   z-index: -1;
 }
@@ -58,30 +60,30 @@ body::after {
 /* Top glow */
 
 body::before {
-  top: -200px;
-  left: -200px;
+  top: -220px;
+  left: -220px;
 }
 
 /* Bottom glow */
 
 body::after {
-  bottom: -200px;
-  right: -200px;
+  bottom: -220px;
+  right: -220px;
 }
 
 /* Links */
 
 a {
-  color: #6366f1;
+  color: #38bdf8;
   text-decoration: none;
   font-weight: 500;
 }
 
 a:hover {
-  color: #818cf8;
+  color: #7dd3fc;
 }
 
-/* Buttons default reset */
+/* Buttons reset */
 
 button {
   font-family: inherit;
