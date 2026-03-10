@@ -189,3 +189,43 @@ canvas {
   margin-top: 10px;
   border-radius: 6px;
 }
+
+/* Fix invisible text inside cards */
+
+.card h3,
+.card h4 {
+  color: #1e293b;
+}
+
+.card p {
+  color: #1e293b;
+}
+
+.card span {
+  color: #1e293b;
+}
+
+.card label {
+  color: #1e293b;
+}
+
+/* Fix dashboard stat text */
+
+.stat h4 {
+  color: #475569;
+}
+
+.stat p {
+  color: #020617;
+  font-weight: 700;
+}
+
+/* Currency converter text */
+
+.card select {
+  color: #020617;
+}
+
+.card {
+  background: #f1f5f9;
+}
